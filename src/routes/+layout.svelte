@@ -1,16 +1,12 @@
-<script lang="ts">
-	import '../app.postcss';
+<script>
+	import Footer from '$lib/components/Footer.svelte';
 	import NavbarHomePage from '$lib/components/NavbarHomePage.svelte';
-	import { onMount } from 'svelte';
-	import VisitorCounter from '$lib/components/VisitorCounter.svelte';
-	let ready = false;
-
-	onMount(() => {
-		ready = true;
-	});
+	import '../app.postcss';
 </script>
 
-	<NavbarHomePage />
-
-	<slot />
-	<VisitorCounter />
+<main>
+	<!-- your main content here -->
+</main>
+<NavbarHomePage />
+<slot/>
+<Footer />
