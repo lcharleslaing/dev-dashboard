@@ -1,0 +1,1 @@
+<p class="sticky-footer">Visitors: </p>

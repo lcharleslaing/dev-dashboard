@@ -1,22 +1,16 @@
 <script lang="ts">
+	import '../app.postcss';
+	import NavbarHomePage from '$lib/components/NavbarHomePage.svelte';
 	import { onMount } from 'svelte';
+	import VisitorCounter from '$lib/components/VisitorCounter.svelte';
+	let ready = false;
 
-	let ready: boolean = false;
-	onMount(() => (ready = true));
+	onMount(() => {
+		ready = true;
+	});
 </script>
 
-<div class="dragbar" />
+	<NavbarHomePage />
 
-{#if ready}
 	<slot />
-{/if}
-
-<style>
-	.dragbar {
-		-webkit-app-region: drag;
-		position: absolute;
-		z-index: 100;
-		height: 40px;
-		width: 100%;
-	}
-</style>
+	<VisitorCounter />

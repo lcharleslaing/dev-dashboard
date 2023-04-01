@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Counter from '$lib/Counter.svelte';
-	import Logo from '$lib/Logo.svelte';
+	import Logo from '$lib/components/Logo.svelte';
 	import { browser } from '$app/environment';
+	import VisitorCounter from '$lib/components/VisitorCounter.svelte';
 
 	let desktop: string;
 
@@ -15,18 +15,14 @@
 	const agent = window.electron ? 'Electron' : 'Browser';
 </script>
 
-<main>
-	<Logo />
-
-	<h1>Hello {agent}!</h1>
-
-	<Counter id="0" {agent} />
-
-	{#if desktop}
-		<br />
-		<br />
-		{desktop}
-	{/if}
+<main class="main-content flex flex-col h-screen my-auto items-center justify-center">
+  <Logo />
+  {#if desktop}
+    <br />
+    <br />
+    {desktop}
+  {/if}
+<!-- <VisitorCounter/> -->
 </main>
 
 <style>
@@ -45,6 +41,14 @@
 		text-align: center;
 		animation: fade 1s;
 		margin: 0 auto;
+	}
+	h2 {
+		font-size: 2em;
+		font-weight: 400;
+		/* text color of navy blue */
+		color: #000080;
+		/* font bold */
+		font-weight: bold;
 	}
 
 	@keyframes fade {

@@ -15,47 +15,80 @@ const port = process.env.PORT || 5173;
 const dev = !app.isPackaged;
 let mainWindow;
 
+
+const { Menu } = require('electron');
+
+const nativeImage = require('electron').nativeImage;
+
 function createWindow() {
+	// create window state
 	let windowState = windowStateManager({
 		defaultWidth: 800,
 		defaultHeight: 600,
 	});
 
+	// Load the icon image
+	const iconPath = path.join(__dirname, 'static\icon.png');
+	const appIcon = nativeImage.createFromPath(iconPath);
+
+	// create browser window
 	const mainWindow = new BrowserWindow({
-		backgroundColor: 'whitesmoke',
-		titleBarStyle: 'hidden',
-		autoHideMenuBar: true,
-		trafficLightPosition: {
-			x: 17,
-			y: 32,
-		},
-		minHeight: 450,
-		minWidth: 500,
-		webPreferences: {
-			enableRemoteModule: true,
-			contextIsolation: true,
-			nodeIntegration: true,
-			spellcheck: false,
-			devTools: dev,
-			preload: path.join(__dirname, 'preload.cjs'),
-		},
+		// window options
+		title: 'Your App Title', // Set your desired title here
 		x: windowState.x,
 		y: windowState.y,
 		width: windowState.width,
 		height: windowState.height,
+		icon: appIcon,
+		webPreferences: {
+			nodeIntegration: true,
+		},
 	});
 
+	// set window state
 	windowState.manage(mainWindow);
 
-	mainWindow.once('ready-to-show', () => {
-		mainWindow.show();
-		mainWindow.focus();
+	// Set the title and prevent it from being changed by the loaded content
+	mainWindow.webContents.on('page-title-updated', (event) => {
+		event.preventDefault();
+		mainWindow.setTitle('Developer Dashboard'); // Set your desired title here
 	});
 
-	mainWindow.on('close', () => {
-		windowState.saveState(mainWindow);
-	});
+	// set window state
+	windowState.manage(mainWindow);
 
+	// create menu template
+	const menuTemplate = [{
+		label: 'File', submenu: [{ label: 'New' }, { label: 'Open' }, { label: 'Save' }, { label: 'Save As' }, { type: 'separator' }, { label: 'Quit', role: 'quit' }]
+	},
+	{
+		label: 'Edit',
+		submenu: [
+			{ label: 'Undo', role: 'undo' },
+			{ label: 'Redo', role: 'redo' },
+			{ type: 'separator' },
+			{ label: 'Cut', role: 'cut' },
+			{ label: 'Copy', role: 'copy' },
+			{ label: 'Paste', role: 'paste' },
+			{ label: 'Select All', role: 'selectAll' }
+		]
+	},
+	{
+		label: 'Help',
+		submenu: [
+			{ label: 'About' }
+		]
+	}
+	];
+
+	// set application menu
+	const menu = Menu.buildFromTemplate(menuTemplate);
+	Menu.setApplicationMenu(menu);
+
+	// load URL
+	mainWindow.loadURL('http://example.com');
+
+	// return window
 	return mainWindow;
 }
 
