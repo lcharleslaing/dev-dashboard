@@ -1,4 +1,4 @@
-<nav class="fixed top-0 z-10 w-full bg-white shadow-lg">
+<nav class="fixed top-0 z-10 w-full shadow-lg">
   <div class="container flex items-center justify-between px-4 py-2 mx-auto">
     <a href="/" class="font-bold text-xl">Big2Tiny Solutions</a>
     <div class="flex items-center">

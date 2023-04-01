@@ -4,7 +4,7 @@
 	import '../app.postcss';
 </script>
 
-<main>
+<main class="">
 	<!-- your main content here -->
 </main>
 <NavbarHomePage />

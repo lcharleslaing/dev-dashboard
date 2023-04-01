@@ -15,6 +15,6 @@
     });
 </script>
 
-<main>
-    <h1 class="text-center text-4xl mt-16">{title}</h1>
+<main class="">
+    <h1 class="py-12 text-center text-4xl mt-16">{title}</h1>
 </main>

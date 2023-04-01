@@ -36,6 +36,7 @@
 		padding: 0;
 	}
 
+
 	main {
 		padding: 2em 1em 1em 1em;
 		text-align: center;

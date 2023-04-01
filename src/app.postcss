@@ -3,6 +3,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Add styles for the regular version of your app */
+body {
+  background-color: white;
+  color: black;
+}
+
+/* Add styles for the dark mode version of your app */
+.dark-mode {
+  background-color: #2A303C;
+  color: #fff;
+}
+
 .dragbar {
     -webkit-app-region: drag;
     position: absolute;
@@ -26,6 +38,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: white; */
-    /* box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); */
+    color: white;
 }
