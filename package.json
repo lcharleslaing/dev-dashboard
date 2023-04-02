@@ -3,35 +3,21 @@
 	"version": "0.0.1",
 	"private": true,
 	"description": "Minimal Sveltekit + Electron starter template.",
-	"main": "src/electron.cjs",
 	"type": "module",
-	"author": "Braden Wiggins",
+	"author": "Lee Charles Laing",
 	"scripts": {
-		"dev": "cross-env NODE_ENV=dev npm run dev:all",
-		"dev:all": "concurrently -n=svelte,electron -c='#ff3e00',blue \"npm run dev:svelte\" \"npm run dev:electron\"",
-		"dev:svelte": "vite dev",
-		"dev:electron": "electron src/electron.cjs",
-		"build": "cross-env NODE_ENV=production npm run build:svelte && npm run build:electron",
-		"build:svelte": "vite build",
-		"build:electron": "electron-builder -mwl --config build.config.json"
+		"dev": "vite dev",
+		"build": "vite build",
+		"serve": "vite preview"
 	},
-	"engines": {
-		"npm": ">=7",
-		"yarn": "use npm - https://github.com/FractalHQ/sveltekit-electron/issues/12#issuecomment-1068399385"
-	},
-	"browserslist": [
-		"Chrome 89"
-	],
 	"dependencies": {
+		"@prisma/client": "^4.12.0",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"daisyui": "^2.51.5",
-		"electron-context-menu": "^3.6.1",
-		"electron-reloader": "^1.2.3",
-		"electron-serve": "^1.1.0",
-		"electron-window-state": "^5.0.3"
+		"prisma": "^4.12.0",
+		"sqlite3": "^5.1.6"
 	},
 	"devDependencies": {
-		"electron-store": "^9.0.0",
 		"@sveltejs/adapter-static": "2.0.1",
 		"@sveltejs/kit": "1.14.0",
 		"@typescript-eslint/eslint-plugin": "^5.56.0",
@@ -40,11 +26,6 @@
 		"concurrently": "^7.6.0",
 		"cross-env": "^7.0.3",
 		"dotenv": "^16.0.3",
-		"electron": "^23.2.0",
-		"electron-builder": "^24.1.2",
-		"electron-connect": "^0.6.3",
-		"electron-packager": "^17.1.1",
-		"electron-updater": "^5.3.0",
 		"eslint": "^8.36.0",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-svelte3": "^4.0.0",
@@ -61,10 +42,5 @@
 		"tslib": "^2.5.0",
 		"typescript": "^4.9.4",
 		"vite": "^4.0.4"
-	},
-	"overrides": {
-		"electron": {
-			"got": "^12.5.1"
-		}
 	}
 }

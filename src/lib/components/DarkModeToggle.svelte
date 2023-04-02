@@ -1,4 +1,3 @@
-<!-- settings/+page.svelte -->
 <script>
 	import { onMount } from 'svelte';
 
@@ -19,23 +18,21 @@
 			document.body.classList.toggle('dark-mode', isDarkMode);
 		}
 	});
-
-	function handleSave() {
-		console.log('handleSave called', isDarkMode);
-		// Save the dark mode setting to local storage
-		localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
-		alert(`Dark mode is now ${isDarkMode ? 'enabled' : 'disabled'}`);
-	}
 </script>
 
-<div class="py-6">
-	<label class="checkbox">
-		<input
-			type="checkbox"
-			class="checkbox-input"
-			bind:checked={isDarkMode}
-			on:change={toggleDarkMode}
-		/>
-		<span class="checkbox-label">Dark mode</span>
-	</label>
-</div>
+<label class="inline-flex items-center">
+	<input
+		type="checkbox"
+		class="form-checkbox rounded text-blue-500"
+		bind:checked={isDarkMode}
+		on:change={toggleDarkMode}
+	/>
+	<span class="ml-2">Dark mode</span>
+</label>
+
+<style>
+	.dark-mode {
+		background-color: #1a202c;
+		color: #cbd5e0;
+	}
+</style>

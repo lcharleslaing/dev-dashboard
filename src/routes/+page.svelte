@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Logo from '$lib/components/Logo.svelte';
 	import { browser } from '$app/environment';
-	import VisitorCounter from '$lib/components/VisitorCounter.svelte';
 
 	let desktop: string;
 
@@ -16,13 +15,13 @@
 </script>
 
 <main class="main-content flex flex-col h-screen my-auto items-center justify-center">
-  <Logo />
-  {#if desktop}
-    <br />
-    <br />
-    {desktop}
-  {/if}
-<!-- <VisitorCounter/> -->
+	<Logo />
+	{#if desktop}
+		<br />
+		<br />
+		{desktop}
+	{/if}
+	<!-- <VisitorCounter/> -->
 </main>
 
 <style>
@@ -35,7 +34,6 @@
 		margin: 0;
 		padding: 0;
 	}
-
 
 	main {
 		padding: 2em 1em 1em 1em;
